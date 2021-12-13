@@ -1,0 +1,10 @@
+.movie-container {
+  display:flex;
+  margin: 20px;
+  flex-wrap: wrap;
+
+  .card {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
