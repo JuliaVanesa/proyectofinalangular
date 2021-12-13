@@ -1,1 +1,35 @@
-<p>register works!</p>
+<h1>Registro</h1>
+
+<form [formGroup]="registerForm">
+  <div class="registro">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+      <input type="nombre" class="form-control"  formControlName="nombre">
+      <div *ngIf="nombreControl.invalid && (nombreControl.dirty || nombreControl.touched)" class="alert alert-danger">
+        <div *ngIf="nombreControl.hasError('required')">
+             El nombre es requerido
+           </div>
+      </div>
+
+    </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+    <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)" class="alert alert-danger">
+      <div *ngIf="emailControl.hasError('email')">
+           Verificar email
+         </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+    <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)" class="alert alert-danger">
+    <div *ngIf="passwordControl.hasError('required')">La contraseña es requerida</div>
+    <div *ngIf="passwordControl.hasError('minlength')">La contraseña debe tener minimo 8 caracteres</div>
+  </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid" (click)="registrar()">Registrar</button>
+</div>
+</form>
