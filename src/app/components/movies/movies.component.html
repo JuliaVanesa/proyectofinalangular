@@ -3,7 +3,7 @@
     <img [src]="movie.image.url" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title">{{movie.title}}</h5>
-      <a href="#" class="btn btn-primary">+info</a>
+      <a  class="btn btn-primary" (click)="navigateToInfo(movie.id)">+info</a>
     </div>
   </div>
 </div>
