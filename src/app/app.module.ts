@@ -11,6 +11,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MenuComponent } from './components/menu/menu.component';
     MoviesComponent,
     InfoComponent,
     CartComponent,
-    MenuComponent
+    MenuComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,
