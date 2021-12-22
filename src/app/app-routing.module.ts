@@ -22,6 +22,11 @@ const routes: Routes = [
   {
     path: 'mi-cuenta',
     component: MyAccountComponent
+  },
+  {
+    path: '',
+    redirectTo: 'peliculas',
+    pathMatch: 'full'
   }
 
 ];
