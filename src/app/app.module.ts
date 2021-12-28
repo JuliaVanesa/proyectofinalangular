@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { PersonaListComponent } from './components/persona-list/persona-list.component';
+import { PersonaItemComponent } from './components/persona-item/persona-item.component';
+import { HooksComponent } from './components/hooks/hooks.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     InfoComponent,
     CartComponent,
     MenuComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    PersonaListComponent,
+    PersonaItemComponent,
+    HooksComponent
   ],
   imports: [
     BrowserModule,
