@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,31 +8,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm = new FormGroup ({
-    email: new FormControl ('', Validators.email),
-    password: new FormControl ('', [Validators.required, Validators.minLength(8)])
-  });
-
-  emailControl = this.loginForm.controls['email'];
-  passwordControl = this.loginForm.controls['password'];
-
-
-
-  constructor() {}
-
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
-    this.loginForm.valueChanges.subscribe(values => console.log('values change', values));
-    //this.loginForm.controls['mail'].valueChanges.subscribe(values => console.log('values change', values))
+
   }
+  validateUser() {
+    const name = 'gpaez';
+    const password = 'mipass';
 
-
-
-  loguear() {
-    console.log(this.loginForm.value);
+    this.userService.validateUser(name,password).subscribe((response: any) => console.log(response));
   }
 }
-
-
-
-

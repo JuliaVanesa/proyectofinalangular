@@ -12,7 +12,7 @@ export class PersonaListComponent implements OnInit, AfterViewInit, OnDestroy, O
   @Input() user: User[] = [];
   @Output() selected = new EventEmitter<User>();
 
-  selectedUser: User = {nombre: '', mail: '', password: ''};
+  selectedUser: User = {name: '', email: '', password: ''};
 
   constructor() { }
 
@@ -40,8 +40,8 @@ clickUser(user: User) {
 
 
    isSelected(user: User) : boolean {
-     return user.nombre === this.selectedUser.nombre &&
-     user.mail === this.selectedUser.mail
+     return user.name === this.selectedUser.name &&
+     user.email === this.selectedUser.email
    }
 
 

@@ -15,6 +15,9 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { PersonaListComponent } from './components/persona-list/persona-list.component';
 import { PersonaItemComponent } from './components/persona-item/persona-item.component';
 import { HooksComponent } from './components/hooks/hooks.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './material/material.module';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { HooksComponent } from './components/hooks/hooks.component';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
+    MaterialModule
+
 
   ],
   providers: [],

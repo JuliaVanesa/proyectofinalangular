@@ -1,25 +1,25 @@
 <h1>Login</h1>
 
-<form [formGroup]="loginForm">
+<form >
   <div class="registro">
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
-    <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)" class="alert alert-danger">
-      <div *ngIf="emailControl.hasError('email')">
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" >
+    <!-- <div  class="alert alert-danger"> -->
+      <!-- <div>
            Verificar email
-         </div>
-    </div>
+         </div> -->
+    <!-- </div> -->
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" formControlName="password">
-    <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)" class="alert alert-danger">
-    <div *ngIf="passwordControl.hasError('required')">La contraseña es requerida</div>
-    <div *ngIf="passwordControl.hasError('minlength')">La contraseña debe tener minimo 8 caracteres</div>
+    <input type="password" class="form-control" id="password" >
+    <!-- <div  class="alert alert-danger"> -->
+    <!-- <div >La contraseña es requerida</div>
+    <div >La contraseña debe tener minimo 8 caracteres</div> -->
   </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="loguear()">Ingresar</button>
-</div>
+  <button type="submit" class="btn btn-primary">Ingresar</button>
+<!-- </div> -->
 </form>

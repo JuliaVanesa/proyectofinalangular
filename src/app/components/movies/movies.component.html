@@ -1,9 +1,23 @@
-<div class="movie-container">
-  <div *ngFor="let movie of movies" class="card" style="width: 18rem;">
-    <img [src]="movie.image.url" class="card-img-top" alt="">
-    <div class="card-body">
-      <h5 class="card-title">{{movie.title}}</h5>
-      <a  class="btn btn-primary" (click)="navigateToInfo(movie.id)">+info</a>
-    </div>
-  </div>
-</div>
+
+
+<div class="row">
+  <h1>Movies</h1>
+   <div class="row">
+     <div class="movie-container d-flex flex-wrap justify-content-center">
+       <mat-card class="example-card m-5" *ngFor="let movie of movies"  style="width: 18rem;">
+         <mat-card-header style="display: flex; justify-content: center;align-items: center;height: 50px; text-align: center;">
+           <h3 class="card-title" style="font-weight: bolder;">{{movie.Title}}</h3>
+         </mat-card-header>
+         <img mat-card-image [src]= "movie.Poster" alt="" style="height: 400px;">
+         <mat-card-actions>
+           <button  mat-raised-button color="primary" style="display:block; margin: 0px auto; width: 95%;" (click)="navigateToInfo(movie.imdbID)">Details</button>
+         </mat-card-actions>
+         <mat-card-content>
+           <p class="card-text">{{movie.Year}}</p>
+         </mat-card-content>
+       </mat-card>
+
+   </div>
+
+ </div>
+
