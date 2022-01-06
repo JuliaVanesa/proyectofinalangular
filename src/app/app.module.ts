@@ -17,6 +17,7 @@ import { PersonaItemComponent } from './components/persona-item/persona-item.com
 import { HooksComponent } from './components/hooks/hooks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
+import { CartService } from './services/cart.service';
 
 
 @NgModule({
@@ -43,7 +44,9 @@ import { MaterialModule } from './material/material.module';
 
 
   ],
-  providers: [],
+  providers: [
+    CartService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
