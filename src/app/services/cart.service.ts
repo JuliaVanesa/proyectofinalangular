@@ -5,7 +5,9 @@ import { environment } from 'src/environments/environment';
 import { Cart } from '../models/cart.model';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 
 export class CartService {
@@ -14,10 +16,10 @@ export class CartService {
     private httpClient: HttpClient
   ) { }
 
-  private url = environment.urlApi + 'cart'
+  private url = environment.cartApi;
 
-  getList(): Observable<Cart[]>{
-    return this.httpClient.get<Cart[]>(this.url);
+  getList(): Observable<any[]>{
+    return this.httpClient.get<any[]>(this.url);
   }
 
 
