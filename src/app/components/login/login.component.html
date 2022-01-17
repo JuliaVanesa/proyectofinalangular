@@ -1,25 +1,29 @@
-<h1>Login</h1>
 
-<form >
-  <div class="registro">
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" >
-    <!-- <div  class="alert alert-danger"> -->
-      <!-- <div>
-           Verificar email
-         </div> -->
-    <!-- </div> -->
-  </div>
-  <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" >
-    <!-- <div  class="alert alert-danger"> -->
-    <!-- <div >La contraseña es requerida</div>
-    <div >La contraseña debe tener minimo 8 caracteres</div> -->
-  </div>
-  </div>
 
-  <button type="submit" class="btn btn-primary">Ingresar</button>
-<!-- </div> -->
-</form>
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <p>
+      <mat-form-field>
+        <input type="text" matInput placeholder="User" formControlName="user">
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <input type="password" matInput placeholder="Password" formControlName="password">
+      </mat-form-field>
+    </p>
+
+    <p *ngIf="error" class="error">
+      {{ error }}
+    </p>
+
+    <div class="button">
+      <button type="submit" mat-button color="primary">login</button>
+    </div>
+
+  </form>
+  </mat-card-content>
+</mat-card>

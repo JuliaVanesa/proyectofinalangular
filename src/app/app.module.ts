@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,9 +16,12 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { PersonaListComponent } from './components/persona-list/persona-list.component';
 import { PersonaItemComponent } from './components/persona-item/persona-item.component';
 import { HooksComponent } from './components/hooks/hooks.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { CartService } from './services/cart.service';
+import { MostViewComponent } from './components/most-view/most-view.component';
+import { MostViewAdminComponent } from './components/most-view-admin/most-view-admin.component';
+import { InterceptorService } from './interceptors/interceptor.service';
 
 
 @NgModule({
@@ -32,7 +36,9 @@ import { CartService } from './services/cart.service';
     MyAccountComponent,
     PersonaListComponent,
     PersonaItemComponent,
-    HooksComponent
+    HooksComponent,
+    MostViewComponent,
+    MostViewAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -40,12 +46,16 @@ import { CartService } from './services/cart.service';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    BrowserAnimationsModule
+
 
 
   ],
   providers: [
-    CartService
+    CartService,
+    {provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

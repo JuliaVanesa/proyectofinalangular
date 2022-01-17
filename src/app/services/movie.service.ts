@@ -28,7 +28,7 @@ export class MovieService {
   }
 
   getMovie() {
-    return this.httpCliente.get<Movie>(this.url + this.search + 'starwars' + this.key)
+    return this.httpCliente.get<Movie>(this.url + this.search + 'star wars'+ this.key)
   }
 
   // addCart(id: string): Observable<Movie[]> {

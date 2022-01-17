@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +10,32 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  error!: string;
+
   constructor(
-    private userService: UserService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-
   }
-  validateUser() {
-    const name = 'gpaez';
-    const password = 'mipass';
 
-    this.userService.validateUser(name,password).subscribe((response: any) => console.log(response));
+  form: FormGroup = new FormGroup({
+    user: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
+
+  submit() {
+    if (this.form.valid) {
+      this.loginService.validateCredentials(this.form.get('user')?.value, this.form.get('password')?.value, )
+      .subscribe(valid => {
+        if (valid) {
+          this.router.navigate(['peliculas']);
+        } else {
+          this.error = 'Invalid User or Password';
+        }
+      })
+    }
   }
+
 }
