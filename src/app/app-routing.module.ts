@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartComponent } from './components/cart/cart.component';
 import { HooksComponent } from './components/hooks/hooks.component';
 import { InfoComponent } from './components/info/info.component';
 import { LoginComponent } from './components/login/login.component';
@@ -52,6 +53,12 @@ const routes: Routes = [
     canActivate: [ProtectedRouteGuard],
     component: MostViewComponent
   },
+  {
+    path: 'cart',
+    canActivate: [ProtectedRouteGuard],
+    component: CartComponent
+  },
+
   {
     path: '',
     redirectTo: 'peliculas',

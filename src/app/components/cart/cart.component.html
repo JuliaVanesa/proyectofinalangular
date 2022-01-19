@@ -1,1 +1,42 @@
-<p>cart works!</p>
+<div class="container">
+  <h1>carrito</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Movie</th>
+        <th scope="col">Amount</th>
+      </tr>
+
+  </thead>
+
+  <tbody >
+
+
+    <tr *ngFor="let movies of allMoviesInCart; let i = index">
+
+      <th scope="row">{{i+1}}</th>
+
+      <td><img [src]="movies.url" alt="movie.title" style="height: 120px;"></td>
+
+      <td>{{movies.title}}</td>
+
+      <td>{{movies.price}}</td>
+
+      <td><button button type="button" class="btn btn-danger" (click)="deleteMovies(movies.imdbID)">Eliminar</button></td>
+
+    </tr>
+
+    <tr>
+      <th>Total</th>
+
+      <td>${{total}}</td>
+    </tr>
+
+
+
+  </tbody>
+
+</table>
+
+</div>

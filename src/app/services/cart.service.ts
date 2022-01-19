@@ -18,8 +18,8 @@ export class CartService {
 
   private url = environment.cartApi;
 
-  getList(): Observable<any[]>{
-    return this.httpClient.get<any[]>(this.url);
+  getList(): Observable<Cart[]>{
+    return this.httpClient.get<Cart[]>(this.url);
   }
 
 
