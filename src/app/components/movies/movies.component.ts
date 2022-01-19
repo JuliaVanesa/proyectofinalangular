@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Cart } from 'src/app/models/cart.model';
-import { moviesApi, Movie  } from 'src/app/models/movie.model';
+import { moviesApi  } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -19,13 +18,23 @@ export class MoviesComponent implements OnInit {
     private router: Router
   ) { }
 
-  movies: moviesApi[] = [];
+  // movies: moviesApi[] = [];
+  allMovies : moviesApi[] = [];
 
-    private subscription: Subscription | undefined;
+    private subscription = new Subscription
 
   ngOnInit(): void {
 
-   this.subscription = this.movieService.getMovie().subscribe(movies => {this.movies = movies.Search});
+    for (let i = 1; i<9; i++) {
+      this.subscription.add(this.movieService.getMovies(i).subscribe(data =>{
+        console.log(data)
+        this.allMovies = this.allMovies.concat(data.Search);
+
+
+      }))
+    }
+
+  //  this.subscription = this.movieService.getMovies(i).subscribe(movies => {this.movies = movies.Search});
 
   }
 
