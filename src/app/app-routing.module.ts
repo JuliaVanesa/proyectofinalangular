@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AdminRoleGuard } from './guards/admin-role.guard';
 import { ProtectedRouteGuard } from './guards/protected-route.guard';
 
+
 const routes: Routes = [
   {
     path: 'login',
@@ -28,6 +29,7 @@ const routes: Routes = [
   {
     path: 'peliculas',
     canActivate: [ProtectedRouteGuard],
+
     component: MoviesComponent
   },
   {

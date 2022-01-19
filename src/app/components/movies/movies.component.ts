@@ -35,6 +35,12 @@ export class MoviesComponent implements OnInit {
   ])
   }
 
+  logout() {
+    localStorage.removeItem('token')
+    this.router.navigate(['login'])
+
+  }
+
 //   addToCart(){
 
 //     this.movieToCart.title = this.movies.title;

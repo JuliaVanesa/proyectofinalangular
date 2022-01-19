@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
   });
 
   submit() {
+
+    // this.loginService.validarToken().subscribe(res =>console.log(res));
+
     if (this.form.valid) {
       this.loginService.validateCredentials(this.form.get('user')?.value, this.form.get('password')?.value, )
       .subscribe(valid => {
@@ -37,5 +40,7 @@ export class LoginComponent implements OnInit {
       })
     }
   }
+
+
 
 }
