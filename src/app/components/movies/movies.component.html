@@ -8,14 +8,14 @@
      <div class="movie-container d-flex flex-wrap justify-content-center">
        <mat-card class="example-card m-5" *ngFor="let movie of allMovies"  style="width: 18rem;">
          <mat-card-header style="display: flex; justify-content: center;align-items: center;height: 50px; text-align: center;">
-           <h3 class="card-title" style="font-weight: bolder;">{{movie.Title}}</h3>
+           <h3 class="card-title" style="font-weight: bolder;">{{movie?.Title}}</h3>
          </mat-card-header>
          <img mat-card-image [src]= "movie.Poster" alt="" style="height: 400px;">
          <mat-card-actions>
            <button  mat-raised-button color="primary" style="display:block; margin: 0px auto; width: 95%;" (click)="navigateToInfo(movie.imdbID)">Details</button>
          </mat-card-actions>
          <mat-card-content>
-           <p class="card-text">{{movie.Year}}</p>
+           <p class="card-text">{{movie?.Year}}</p>
          </mat-card-content>
        </mat-card>
 

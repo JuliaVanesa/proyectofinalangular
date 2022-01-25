@@ -19,9 +19,9 @@
 
       <td><img [src]="movies.url" alt="movie.title" style="height: 120px;"></td>
 
-      <td>{{movies.title}}</td>
+      <td>{{movies?.title}}</td>
 
-      <td>{{movies.price}}</td>
+      <td>{{movies?.price}}</td>
 
       <td><button button type="button" class="btn btn-danger" (click)="deleteMovies(movies.imdbID)">Eliminar</button></td>
 

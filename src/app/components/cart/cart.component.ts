@@ -42,7 +42,7 @@ export class CartComponent implements OnInit {
     )
 
     let index = this.allMoviesInCart.findIndex(m => m.imdbID == id)
-
+    this.total -= this.allMoviesInCart[index].price
     this.allMoviesInCart.splice(index, 1)
   }
 
