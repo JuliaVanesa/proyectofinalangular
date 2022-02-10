@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { Subscription, tap } from 'rxjs';
 import { Cart } from 'src/app/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
+import { cartStateSelector } from './store/cart.selector';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +13,8 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit {
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private store : Store
   ) { }
 
   private subscription = new Subscription
@@ -22,15 +25,27 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.subscription.add(this.cartService.getList().subscribe(data => {
-      this.allMoviesInCart = data;
+    this.store.pipe(
+      select(cartStateSelector),
+      tap(data => {
+        console.log("Respuesta desde API", data);
+      })
+    ).subscribe(data => {
+
+      this.allMoviesInCart = data.movies
+    })
+
+
+    // this.subscription.add(this.cartService.getList().subscribe(data => {
+    //   this.allMoviesInCart = data;
+
 
       this. allMoviesInCart.forEach(m => {
         this.total += m.price
       });
       console.log(this.allMoviesInCart)
-    }))
-  }
+    }
+
 
 
 

@@ -6,6 +6,8 @@ import { MovieService } from 'src/app/services/movie.service';
 import { CartService } from 'src/app/services/cart.service';
 import { InfoService } from 'src/app/services/info.service';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { cartAddMovie } from '../cart/store/cart.actions';
 
 @Component({
   selector: 'app-info',
@@ -25,6 +27,7 @@ export class InfoComponent implements OnInit {
     private router: Router,
     private cartService: CartService,
     private infoService: InfoService,
+    private store: Store
 
   ) { }
     private subscription = new Subscription;;
@@ -50,23 +53,27 @@ export class InfoComponent implements OnInit {
   }
 
   addToCart() {
+    this.movieToCart.id="";
     this.movieToCart.title = this.movie.Title;
     this.movieToCart.url = this.movie.Poster;
     this.movieToCart.price = 500;
     this.movieToCart.imdbID = this.movie.imdbID;
+    this.movieToCart.exists=true;
 
-    this.subscription.add(
-      this.cartService.postMovie(this.movieToCart).subscribe(data => {
-        console.log('data:' +data)
-      })
-    );
+    this.store.dispatch(cartAddMovie({movie : this.movieToCart}))
 
-    let index = this.allMoviesInCart.findIndex(index =>index.imdbID ==this.movieToCart.imdbID);
+    // this.subscription.add(
+    //   this.cartService.postMovie(this.movieToCart).subscribe(data => {
+    //     console.log('data:' +data)
+    //   })
+    // );
 
-    if(index == -1) {
-      this.allMoviesInCart.push(this.movieToCart);
-      alert('Pelicula agregada');
-    } else alert ('error')
+    // let index = this.allMoviesInCart.findIndex(index =>index.imdbID ==this.movieToCart.imdbID);
+
+    // if(index == -1) {
+    //   this.allMoviesInCart.push(this.movieToCart);
+    //   alert('Pelicula agregada');
+    // } else alert ('error')
   };
 
   back() {

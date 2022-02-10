@@ -23,12 +23,12 @@ export class CartService {
   }
 
 
-  postMovie(movie : Cart): Observable<Cart> {
+  postMovie(movie : Cart): Observable<any> {
     console.log(movie)
     return this.httpClient.post<Cart>(this.url,movie);
   }
 
-  delete(id: string): Observable<boolean>{
+  delete(id: string): Observable<any>{
     return this.httpClient.delete<boolean>(`${this.url}?id=${id}`)
 }
 
