@@ -15,7 +15,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { PersonaListComponent } from './components/persona-list/persona-list.component';
 import { PersonaItemComponent } from './components/persona-item/persona-item.component';
-import { HooksComponent } from './components/hooks/hooks.component';
+// import { HooksComponent } from './components/hooks/hooks.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { CartService } from './services/cart.service';
@@ -36,7 +36,7 @@ import { InterceptorService } from './interceptors/interceptor.service';
     MyAccountComponent,
     PersonaListComponent,
     PersonaItemComponent,
-    HooksComponent,
+    // HooksComponent,
     MostViewComponent,
     MostViewAdminComponent
   ],

@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
-import { PersonService } from 'src/app/services/person.service';
+import { RegisterService } from 'src/app/services/register.service';
 import { PersonaListComponent } from '../persona-list/persona-list.component';
 
 @Component({
@@ -11,7 +12,15 @@ import { PersonaListComponent } from '../persona-list/persona-list.component';
 })
 export class RegisterComponent implements OnInit {
 
-  personas: User[] = [];
+  personas: User = {
+    name:'',
+    email:'',
+    password: ''
+  }
+
+  allUsers : User[] = [];
+
+  flag : boolean = true;
 
   registerForm = new FormGroup ({
     name: new FormControl ('', Validators.required),
@@ -27,26 +36,43 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild(PersonaListComponent) personaList: any;
 
-  constructor(private personService: PersonService) { }
+  constructor(private registerService: RegisterService) { }
+
+  private subscription = new Subscription;
 
   ngOnInit(): void {
-    this.personService.getList().subscribe (personas => this.personas = personas)
-    this.registerForm.controls['name'].valueChanges.subscribe(values => console.log('values change', values))
+    this.subscription.add(this.registerService.getUsers().subscribe(data => {
+      this.allUsers = data;
+      console.table(data);
+    }));
 
   }
 
-  // ngAfterViewInit(): void {
-  //   setTimeout(() =>this.personaList.selectedPersona = this.personas [1], 0);
-  // }
+  register() {
+    this.personas.name = this.registerForm.controls['name'].value;
+    this.personas.email = this.registerForm.controls['email'].value;
+    this.personas.password = this.registerForm.controls['password'].value;
 
-  registrar() {
-    console.log(this.registerForm.value);
-    this.selectedPersona = this.registerForm.value;
+    this.subscription.add(this.registerService.newUser(this.personas).subscribe(data => {
+      console.log('desde la api')
+      console.log(data);
+    })
+  );
+
+  this.flag = (this.allUsers.findIndex(mail => mail.email == this.personas.email)) > -1;
+
+  if(!this.flag) {
+    this.allUsers.push(this.personas);
+    this.subscription.add(alert("registrado ok"))
+
+  } else {
+    this.subscription.add(alert("fallo"))
   }
 
-  personaSelected(persona: User) {
-    this.selectedPersona = persona;
-    this.registerForm.setValue(persona);
+  this.registerForm.reset();
+
+
   }
 
-}
+
+ }

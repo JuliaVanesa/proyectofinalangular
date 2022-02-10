@@ -1,12 +1,12 @@
 
 
-<mat-card>
+<!-- <mat-card>
   <mat-card-title>Login</mat-card-title>
   <mat-card-content>
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <p>
+    <p class="form-login">
       <mat-form-field>
-        <input type="text" matInput placeholder="User" formControlName="user">
+        <input class="user" type="text" matInput placeholder="User" formControlName="user">
       </mat-form-field>
     </p>
 
@@ -26,4 +26,54 @@
 
   </form>
   </mat-card-content>
-</mat-card>
+</mat-card> -->
+
+<div class="limiter">
+  <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+          <form class="login100-form" autocomplete="off" [formGroup]="form" (ngSubmit)="submit()">
+
+              <span class="login100-form-title p-b-49">
+                  Login
+              </span>
+
+              <div class="wrap-input100 m-b-23">
+                  <span class="label-input100">User</span>
+                  <input class="input100" type="text" matInput placeholder="User" formControlName="user">
+                  <span class="focus-input100"></span>
+              </div>
+
+              <div class="wrap-input100">
+                  <span class="label-input100">Password</span>
+                  <input class="input100" type="password" matInput placeholder="Password" formControlName="password">
+                  <span class="focus-input100"></span>
+              </div>
+
+              <p *ngIf="error" class="error">
+                {{ error }}
+              </p>
+
+              <div class="text-right p-t-8 p-b-31"></div>
+
+              <div class="container-login100-form-btn">
+                  <div class="wrap-login100-form-btn">
+                      <div class="login100-form-bgbtn"></div>
+                      <button class="login100-form-btn">
+                          Login
+                      </button>
+                  </div>
+              </div>
+
+              <div class="flex-col-c p-t-60">
+                  <span class="txt1 p-b-17">
+                      ¿No tienes cuenta?
+                  </span>
+
+                  <a routerLink="/registro" class="txt2">
+                      Crear una aquí
+                  </a>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

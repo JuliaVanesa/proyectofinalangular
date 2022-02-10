@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
-import { HooksComponent } from './components/hooks/hooks.component';
+// import { HooksComponent } from './components/hooks/hooks.component';
 import { InfoComponent } from './components/info/info.component';
 import { LoginComponent } from './components/login/login.component';
 import { MostViewAdminComponent } from './components/most-view-admin/most-view-admin.component';
@@ -39,10 +39,10 @@ const routes: Routes = [
     component: MyAccountComponent
   },
 
-  {
-    path: 'hooks',
-    component: HooksComponent
-  },
+  // {
+  //   path: 'hooks',
+  //   component: HooksComponent
+  // },
   {
     path: 'most view admin',
     canActivate: [ProtectedRouteGuard, AdminRoleGuard],

@@ -1,3 +1,21 @@
+
+.movies{
+  background-color: rgb(221, 177, 177);
+
+}
+
+h1{
+  font-size: 50px;
+  font-family: monospace;
+  text-align: center;
+  margin-top: 30px;
+}
+
+h3{
+  font-family: monospace;
+
+}
+
 .movie-container {
   display:flex;
   margin: 20px;
@@ -7,4 +25,8 @@
     margin-right: 20px;
     margin-bottom: 20px;
   }
+}
+
+.logout {
+  width: 20%;
 }
