@@ -32,4 +32,8 @@ export class CartService {
     return this.httpClient.delete<boolean>(`${this.url}?id=${id}`)
 }
 
+deleteAllMovies(){
+  return this.httpClient.delete<any>(`${this.url}/deleteall`);
+}
+
 }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { IMostViewMovies } from 'src/app/models/most-view';
-import { MostViewAdminService } from 'src/app/services/most-view-admin.service';
-import { MostViewService } from 'src/app/services/most-view.service';
+import { MostViewAdminService } from '../../services/most-view-admin.service';
+import { MostViewService } from '../../services/most-view.service';
 
 @Component({
   selector: 'app-most-view-admin',

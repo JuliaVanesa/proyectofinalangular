@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subscription, tap } from 'rxjs';
 import { Cart } from 'src/app/models/cart.model';
-import { CartService } from 'src/app/services/cart.service';
-import { cartDeleteMovie } from './store/cart.actions';
+import { CartService } from '../../services/cart.service';
+import Swal from 'sweetalert2';
+import { cartClear, cartDeleteMovie } from './store/cart.actions';
 import { cartStateSelector } from './store/cart.selector';
 
 @Component({
@@ -37,9 +38,6 @@ export class CartComponent implements OnInit {
     })
 
 
-    // this.subscription.add(this.cartService.getList().subscribe(data => {
-    //   this.allMoviesInCart = data;
-
 
       this. allMoviesInCart.forEach(m => {
         this.total += m.price
@@ -52,6 +50,14 @@ export class CartComponent implements OnInit {
 
   deleteMovies(id: string) {
     console.log('el id:' +id)
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Pelicula eliminada',
+      showConfirmButton: false,
+      timer: 1500
+
+    })
 
     this.subscription.add(
       this.cartService.delete(id).subscribe(data => console.log(data))
@@ -59,13 +65,17 @@ export class CartComponent implements OnInit {
 
     let index = this.allMoviesInCart.findIndex(m => m.imdbID == id)
     this.total -= this.allMoviesInCart[index].price
-    // this.allMoviesInCart.splice(index, 1)
 
     this.store.dispatch(cartDeleteMovie({id}))
 
-    // let index = this.allMoviesInCart.findIndex(m => m.imdbID == id)
-    // this.total -= this.allMoviesInCart[index].price
-    // this.allMoviesInCart.splice(index, 1)
-  }
+ }
 
+ deleteAll(){
+
+ this.store.dispatch(cartClear())
+
+ this.allMoviesInCart = []
+
+ this.total = 0;
+}
 }

@@ -1,6 +1,7 @@
 
 <div class="row">
   <h1>Movies</h1>
+
    <div class="row">
      <div class="movie-container d-flex flex-wrap justify-content-center">
        <mat-card class="example-card m-5"  style="width: 18rem;">
@@ -9,7 +10,8 @@
          </mat-card-header>
          <img mat-card-image [src]= "movie?.Poster" alt="" style="height: 400px;">
          <mat-card-actions>
-           <button  mat-raised-button color="primary" style="display:block; margin: 0px auto; width: 95%;" (click)="addToCart()">Rent</button>
+           <button  mat-raised-button color="primary" style="display:block; margin: 0px auto; width: 95%;" (click)="addToCart()">Alquilar</button>
+           <button mat-raised-button color="primary" style="display:block; margin: 0px auto; width: 95%;" (click)="back()">Ver películas</button>
          </mat-card-actions>
          <mat-card-content>
            <p class="card-text">{{movie?.Year}}</p>
@@ -17,5 +19,6 @@
        </mat-card>
 
    </div>
+
 
  </div>

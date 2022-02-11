@@ -4,8 +4,8 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap, tap } from "rxjs";
 import { Cart } from "src/app/models/cart.model";
 import { moviesApi } from "src/app/models/movie.model";
-import { CartService } from "src/app/services/cart.service";
-import { cartAddMovie, cartDeleteMovie, cartSetContent } from "./cart.actions";
+import { CartService } from "../../../services/cart.service";
+import { cartAddMovie, cartClear, cartDeleteMovie, cartSetContent } from "./cart.actions";
 
 @Injectable()
 
@@ -50,14 +50,12 @@ map(data => cartSetContent({ movies: data.cartContent as Cart[] })),
 
 
 
-// cartClean$ = createEffect(() =>
-// this.actions.pipe(
-// ofType(cartClear),
-// switchMap(action => this.cartService.clearCart()),
-// map(() => cartSetContent({ status: "CLEAN", movies: [] as MovieAPI[] })),
-// )
-// );
-
-
+cartClean$ = createEffect(() =>
+this.actions.pipe(
+  ofType(cartClear),
+  switchMap(action => this.cartService.deleteAllMovies()),
+  map(data => cartSetContent({movies: data.cartContent as Cart[]}))
+)
+)
 
 }

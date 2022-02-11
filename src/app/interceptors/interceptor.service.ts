@@ -1,10 +1,14 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginService } from '../services/login.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
+
 export class InterceptorService implements HttpInterceptor {
 
   constructor(
@@ -21,7 +25,9 @@ export class InterceptorService implements HttpInterceptor {
         setHeaders: { Authorization: `Bearer ${token}`
       }
     });
+    console.log(request)
     }
-    return next.handle(request);
+    return next.handle(request)
+
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IMostViewMovies } from 'src/app/models/most-view';
-import { MostViewService } from 'src/app/services/most-view.service';
+import { MostViewService } from '../../services/most-view.service';
 
 @Component({
   selector: 'app-most-view',

@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart.model';
 import { OnlyMovie } from 'src/app/models/movie.model';
-import { MovieService } from 'src/app/services/movie.service';
 import { CartService } from 'src/app/services/cart.service';
 import { InfoService } from 'src/app/services/info.service';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { cartAddMovie } from '../cart/store/cart.actions';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-info',
@@ -15,11 +15,6 @@ import { cartAddMovie } from '../cart/store/cart.actions';
   styleUrls: ['./info.component.scss']
 })
 export class InfoComponent implements OnInit {
-
-  // movies: moviesApi[] = [];
-
-
-
 
 
   constructor(
@@ -62,18 +57,14 @@ export class InfoComponent implements OnInit {
 
     this.store.dispatch(cartAddMovie({movie : this.movieToCart}))
 
-    // this.subscription.add(
-    //   this.cartService.postMovie(this.movieToCart).subscribe(data => {
-    //     console.log('data:' +data)
-    //   })
-    // );
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Pelicula agregada al carrito',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
-    // let index = this.allMoviesInCart.findIndex(index =>index.imdbID ==this.movieToCart.imdbID);
-
-    // if(index == -1) {
-    //   this.allMoviesInCart.push(this.movieToCart);
-    //   alert('Pelicula agregada');
-    // } else alert ('error')
   };
 
   back() {

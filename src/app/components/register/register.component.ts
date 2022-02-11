@@ -2,8 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
-import { RegisterService } from 'src/app/services/register.service';
-import { PersonaListComponent } from '../persona-list/persona-list.component';
+import { RegisterService } from '../../services/register.service';
+
 
 @Component({
   selector: 'app-register',
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
 
   selectedPersona: User = {name:'', email:'', password:''};
 
-  @ViewChild(PersonaListComponent) personaList: any;
+
 
   constructor(private registerService: RegisterService) { }
 
