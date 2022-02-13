@@ -1,0 +1,40 @@
+section {
+
+  margin-bottom: 4rem;
+
+  h2{
+    text-align: center;
+    font-size: 45px;
+  }
+
+  .btn-eliminate, .btn-create, .btn-update {
+    text-align: center;
+  }
+
+  .form-group{
+    display: flex;
+    justify-content: center;
+
+    input{
+      width: 40rem;
+    }
+  }
+
+    form {
+      .pop-alert{
+
+        display:flex;
+        justify-content: center;
+
+        .alert-danger{
+          width: fit-content;
+        }
+      }
+  }
+
+  .btn-primary{
+    background-color: rgb(245, 13, 214);
+    border: 1px solid rgba(20, 19, 19, 0.678);
+  }
+
+}

@@ -1,7 +1,9 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { IMostViewMovies } from 'src/app/models/most-view';
+import Swal from 'sweetalert2';
 import { MostViewAdminService } from '../../services/most-view-admin.service';
 import { MostViewService } from '../../services/most-view.service';
 
@@ -109,14 +111,11 @@ export class MostViewAdminComponent implements OnInit {
 
     if(this.continue != -1){
 
-
-
       //Pasamos todos los datos de la peli a editar previos a los cambios
 
       this.movie = this.allMovies[this.continue];
 
       this.movie.id = this.updateForm.controls['id'].value;
-
 
 
       //Validacion para ingresar los cambios
@@ -126,8 +125,6 @@ export class MostViewAdminComponent implements OnInit {
         this.movie.image = this.updateForm.controls['image'].value;
 
       }
-
-
 
       //Incompleto. ACOMODAR
 
@@ -174,13 +171,27 @@ export class MostViewAdminComponent implements OnInit {
 
 
 
-      this.subscription.add(this.adminService.updateMovies(this.movie).subscribe(data => alert('movie edited')))
+      this.subscription.add(this.adminService.updateMovies(this.movie).subscribe(data => Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Pelicula editada',
+        showConfirmButton: false,
+        timer: 1500
+      })))
 
     } else {
 
-      alert ('You are looking for an unexisting movie');
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'La pelicula no existe',
+        showConfirmButton: false,
+        timer: 1500
+      })
 
     }
+
+    this.updateForm.reset()
 }
 createMovie(){
 
@@ -209,8 +220,16 @@ createMovie(){
   ).subscribe(data => {
 
     console.log(data);
+    Swal.fire ({
+      position: 'center',
+      icon: 'success',
+      title: 'Pelicula agregada',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
-    alert('Movie created')
+    this.createForm.reset()
+
 
 }));
 
@@ -221,15 +240,32 @@ createMovie(){
 
 deleteMovie(){
 
-  this.subscription.add(this.adminService.deleteMovie(this.deleteForm.controls['id'].value).subscribe(
+  this.subscription.add(this.adminService.deleteMovie(String(this.deleteForm.controls['id'].value)).subscribe(
 
     data => {
 
-      alert(data);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Pelicula eliminada',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    }, (err) => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Pelicula no existe',
+        showConfirmButton: false,
+        timer: 1500
+      })
 
     }
 
   ))
+
+  this.deleteForm.reset();
 
 };
 }

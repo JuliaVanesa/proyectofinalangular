@@ -13,8 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
-// import { PersonaListComponent } from './components/persona-list/persona-list.component';
-// import { PersonaItemComponent } from './components/persona-item/persona-item.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { CartService } from './services/cart.service';
@@ -39,8 +37,6 @@ import { CartEffects } from './components/cart/store/cart.effects';
     CartComponent,
     MenuComponent,
     MyAccountComponent,
-    // PersonaListComponent,
-    // PersonaItemComponent,
     MostViewComponent,
     MostViewAdminComponent
   ],

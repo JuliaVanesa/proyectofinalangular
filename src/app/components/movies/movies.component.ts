@@ -18,7 +18,7 @@ export class MoviesComponent implements OnInit {
     private router: Router
   ) { }
 
-  // movies: moviesApi[] = [];
+
   allMovies : moviesApi[] = [];
 
     private subscription = new Subscription
@@ -34,7 +34,7 @@ export class MoviesComponent implements OnInit {
       }))
     }
 
-  //  this.subscription = this.movieService.getMovies(i).subscribe(movies => {this.movies = movies.Search});
+
 
   }
 
@@ -50,15 +50,5 @@ export class MoviesComponent implements OnInit {
 
   }
 
-//   addToCart(){
 
-//     this.movieToCart.title = this.movies.title;
-//     this.movieToCart.url = this.movies.url;
-//     this.movieToCart.price = 500;
-//     this.movieToCart.imdbID = this.movies.id;
-
-// // this.subscription?.add(
-//   this.cartService.postMovie(this.movieToCart).subscribe(data => console.log(data))
-
-// }
 }
