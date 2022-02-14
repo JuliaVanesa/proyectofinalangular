@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Subscription, tap } from 'rxjs';
-import { Cart } from 'src/app/models/cart.model';
+import { Cart } from 'src/app/features/cart/cart.model';
 import { CartService } from '../../services/cart.service';
 import Swal from 'sweetalert2';
 import { cartClear, cartDeleteMovie } from './store/cart.actions';

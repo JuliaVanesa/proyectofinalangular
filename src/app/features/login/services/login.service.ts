@@ -3,6 +3,7 @@ import jwt_decode from 'jwt-decode';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { LoginModule } from '../login.module';
 
 @Injectable({
   providedIn: 'root'

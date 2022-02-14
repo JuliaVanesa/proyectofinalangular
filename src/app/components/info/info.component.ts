@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Cart } from 'src/app/models/cart.model';
+import { Cart } from '../../features/cart/cart.model';
 import { OnlyMovie } from 'src/app/models/movie.model';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../features/cart/services/cart.service';
 import { InfoService } from '../../services/info.service';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { cartAddMovie } from '../cart/store/cart.actions';
+import { cartAddMovie } from '../../features/cart/components/cart/store/cart.actions';
 import Swal from 'sweetalert2';
 
 @Component({
